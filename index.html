@@ -22,16 +22,13 @@ body {
   color:#111;
   position:relative;
   -webkit-font-smoothing:antialiased;
-  overflow-x: hidden;
 }
-
 .bg {
-  position:fixed; top:0; left:0; width:100%; height:100%;
+  position:absolute; top:0; left:0; width:100%; height:220vh;
   background:url('logo.jpg') center/cover no-repeat;
   filter:blur(18px) saturate(1.03);
   opacity:0.18; z-index:0;
 }
-
 header {
   background:#fff; text-align:center; padding:16px 14px;
   border-bottom:3px solid rgba(177,156,217,0.85);
@@ -39,16 +36,13 @@ header {
   display:flex; flex-direction:column; align-items:center; gap:6px;
   animation:fadeDown .6s ease;
 }
-
 .header-top {
   display:flex; align-items:center; justify-content:center; gap:12px; position:relative;
 }
-
 header h1 {
   font-family:'Russo One',sans-serif; color:var(--purple); font-size:1.6rem;
   animation: textPop 1s ease infinite alternate;
 }
-
 header p { color:#444; font-size:.95rem; }
 
 .nav-container { display:flex; justify-content:center; align-items:center; gap:16px; }
@@ -73,70 +67,57 @@ header p { color:#444; font-size:.95rem; }
   .hamburger { display: flex; }
 }
 
-main { max-width:1100px; margin:32px auto; padding:32px 20px; background:var(--panel-bg); border-radius:12px; box-shadow:0 12px 30px rgba(0,0,0,0.09); position:relative; z-index:2; }
+@keyframes slideDown { from{opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);} }
+main { max-width:1100px; margin:32px auto; padding:32px 20px; background:var(--panel-bg); border-radius:12px; box-shadow:0 12px 30px rgba(0,0,0,0.09); position:relative; z-index:2; transition:opacity .45s ease; }
 section { display:none; animation:fadeUp .5s ease both; text-align:center; }
 section.active { display:block; }
-
+@keyframes fadeUp { from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)} }
+@keyframes fadeDown { from{opacity:0; transform:translateY(-20px)} to{opacity:1; transform:translateY(0)} }
+@keyframes textPop { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
 h2 { font-family:'Russo One',sans-serif; color:var(--accent); font-size:2.1rem; margin-bottom:12px; }
 p { font-size:1.03rem; color:#111; line-height:1.6; margin:0 auto 12px; max-width:880px; text-align:center; }
-
-.gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px; }
-.card { background: rgba(255,255,255,0.95); padding:15px; border-radius:12px; margin-bottom:20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
 .btn { display:inline-block; margin:8px; padding:12px 18px; border-radius:25px; color:#fff; font-weight:700; text-decoration:none; transition:.25s; border: 2px solid #000; cursor: pointer; }
 .btn:hover { transform:translateY(-2px) scale(1.05); }
 .btn.email { background:var(--accent); }
 .btn.wa { background:#ff69b4; }
-.btn.submit { background:linear-gradient(135deg,#ffb6c1,#ff69b4); width: 100%; }
+.btn.submit { background:linear-gradient(135deg,#ffb6c1,#ff69b4); width: 100%; border: none; }
 .btn.instagram { background:#C13584; }
 
 input, select, textarea { width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px; font-size:1rem; font-family: inherit; }
 .result { background:#f2f2f2; padding:12px; border-radius:10px; font-weight:700; text-align:center; white-space:pre-line; margin-top: 10px; }
+.card { background: rgba(255,255,255,0.95); padding:15px; border-radius:12px; margin-bottom:20px; }
 
-/* Animations */
-@keyframes slideDown { from{opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);} }
-@keyframes fadeUp { from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)} }
-@keyframes fadeDown { from{opacity:0; transform:translateY(-20px)} to{opacity:1; transform:translateY(0)} }
-@keyframes textPop { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
-
-/* Petals */
 .petal { position: fixed; top: -10px; width: 15px; height: 25px; pointer-events: none; opacity: 0.9;
-  z-index: 10; animation: fall linear infinite; 
+  animation: fall linear infinite; 
   background: radial-gradient(circle at 50% 30%, #ffb6c1 0%, #ff69b4 70%, transparent 100%);
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; 
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 }
-@keyframes fall { 
-  0% { transform: translateY(-20px) rotate(0deg); opacity:0.9; } 
-  100% { transform: translateY(110vh) rotate(180deg); opacity:0; } 
-}
+@keyframes fall { 0% { transform: translateY(-20px) rotate(0deg); opacity:0.9; } 100% { transform: translateY(110vh) rotate(180deg); opacity:0; } }
 
-/* UI Elements */
-#floatingAnimal { position: fixed; font-size: 2.5rem; z-index:5500; pointer-events: none; transition: all 2s ease; opacity: 0; }
-#welcomeNote { position: fixed; top:50%; left:50%; transform:translate(-50%,-50%); background: rgba(255,255,255,0.98); padding:20px 30px; border-radius:15px; font-size:1.5rem; font-weight:700; color:var(--purple); text-align:center; z-index:6000; opacity:0; pointer-events: none; border: 3px solid var(--purple); }
-@keyframes welcomeFade { 
-  0%{opacity:0; transform:translate(-50%, -60%)} 
-  10%, 90%{opacity:1; transform:translate(-50%, -50%)} 
-  100%{opacity:0; transform:translate(-50%, -40%)} 
-}
+footer { text-align:center; padding:14px; background:#fff; color:var(--purple); font-weight:700; margin-top:18px; border-top:3px solid rgba(177,156,217,0.85); position: relative; z-index: 5; }
+
+#floatingAnimal { position: fixed; font-size: 2.5rem; z-index:5500; transition: transform 2s ease, left 2s ease, top 2s ease; pointer-events: none; }
+
+#welcomeNote { position: fixed; top:50%; left:50%; transform:translate(-50%,-50%); background: rgba(255,255,255,0.95); padding:20px 30px; border-radius:15px; font-size:1.5rem; font-weight:700; color:var(--purple); text-align:center; z-index:6000; opacity:0; }
+@keyframes welcomeFade { 0%{opacity:0; transform:translate(-50%, -60%)} 10%{opacity:1; transform:translate(-50%, -50%)} 90%{opacity:1; transform:translate(-50%, -50%)} 100%{opacity:0; transform:translate(-50%, -40%)} }
 
 #botAnswerBox{ background:#f9f9f9; border:1px solid #ccc; border-radius:12px; padding:12px; margin-top:10px; max-height:280px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; }
 .user-message{ background:#ffd6e8; color:#000; padding:10px 14px; border-radius:14px; max-width:80%; align-self:flex-end; text-align: left; }
 .bot-message{ background:#e4dcff; color:#000; padding:10px 14px; border-radius:14px; max-width:80%; align-self:flex-start; text-align: left; }
-
-footer { text-align:center; padding:20px; background:#fff; color:var(--purple); font-weight:700; border-top:3px solid var(--purple); position: relative; z-index: 2; }
 </style>
 </head>
 <body>
-
 <div class="bg"></div>
+
 <div id="welcomeNote">🎉 Welcome to SHAM'S ART VIBEZ! 🎨<br>Let's create something amazing!</div>
 <div id="floatingAnimal">🦄</div>
 
 <header>
   <div class="header-top">
-    <span>🎨💦</span>
+    <div>🎨💦</div>
     <h1>SHAM'S ART VIBEZ</h1>
-    <span>💦🎨</span>
+    <div>💦🎨</div>
   </div>
   <p>Graffiti • Murals • Crafts • Digital Art</p>
   <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
@@ -152,86 +133,87 @@ footer { text-align:center; padding:20px; background:#fff; color:var(--purple); 
   </nav>
 </header>
 
-<main>
-  <section id="home" class="page active">
-    <h2>Welcome</h2>
-    <p>I specialize in custom murals, graffiti, crafts, and digital art made with love and detail.</p>
-    <div class="card" style="border:2px solid red;">
-      <h3 style="color:red; margin-bottom:10px;">⚠ IMPORTANT NOTICE</h3>
-      <ul style="text-align:left; max-width:500px; margin:0 auto; line-height: 1.8;">
-        <li>Send request as soon as you have one.</li>
-        <li>Work takes time based on the waiting list.</li>
-        <li>Price discounts available if you provide supplies.</li>
-        <li><strong>No free work / labour.</strong></li>
-        <li><strong>Pay before you collect.</strong></li>
-      </ul>
+<main id="mainContent">
+<section id="home" class="page active">
+  <h2>Welcome</h2>
+  <p>Where creativity comes to life! I specialize in custom murals, graffiti, crafts, and digital art made with love and detail.</p>
+  <div class="card" style="border:2px solid red;">
+    <h3 style="color:red; font-family:'Russo One',sans-serif; margin-bottom:10px;">⚠ IMPORTANT NOTICE</h3>
+    <ul style="list-style:disc; text-align:left; max-width:600px; margin:0 auto; padding-left: 20px;">
+      <li><strong>Send request as soon as you have one</strong></li>
+      <li>Work takes time depending on the waiting list</li>
+      <li>Send daily checks and updates on your request</li>
+      <li>Price discounts if you provide your own supplies</li>
+      <li><strong>No free work / labour</strong></li>
+      <li><strong>Pay before you collect</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section id="services" class="page">
+  <h2>My Services</h2>
+  <div class="card"><h3>🎨 Custom Art</h3><p>Personalized artwork designed just for you.</p></div>
+  <div class="card"><h3>🖌️ Murals & Graffiti</h3><p>Hand-painted murals for homes, businesses, and events.</p></div>
+  <div class="card"><h3>✂️ Crafts & DIY</h3><p>Handmade clay, cardboard, and mixed media pieces.</p></div>
+  <div class="card"><h3>💻 Digital Art</h3><p>Illustrations and designs for branding or social media.</p></div>
+</section>
+
+<section id="gallery" class="page">
+  <h2>Gallery</h2>
+  <p>Check out my latest work on Instagram!</p>
+  <a href="https://www.instagram.com/shamsartvibez" target="_blank" class="btn instagram">View Instagram Gallery</a>
+</section>
+
+<section id="estimate" class="page">
+  <h2>Price Estimator</h2>
+  <div class="card">
+    <label>Project Size</label>
+    <select id="project">
+      <option value="2500">Small (JMD $2,500+)</option>
+      <option value="4000">Medium (JMD $4,000+)</option>
+      <option value="6000">Large (JMD $6,000+)</option>
+    </select>
+    <label>Surface / Material</label>
+    <select id="surface">
+      <option value="0">Canvas / Clothing</option>
+      <option value="1500">Interior Wall</option>
+      <option value="2500">Exterior Wall</option>
+      <option value="1200">Clay Craft</option>
+      <option value="2500">Digital Poster</option>
+    </select>
+    <textarea id="estDesc" rows="4" placeholder="Describe your idea..."></textarea>
+    <button class="btn submit" id="calculatePrice">Get Estimate</button>
+    <div class="result" id="priceResult">Result will appear here...</div>
+  </div>
+</section>
+
+<section id="qa" class="page">
+  <h2>Art Bot</h2>
+  <div class="card">
+    <input id="userQuestion" placeholder="Ask about prices, murals, or crafts...">
+    <button class="btn wa" onclick="botAnswer()">Ask Bot</button>
+    <div id="botAnswerBox"></div>
+  </div>
+</section>
+
+<section id="contact" class="page">
+  <h2>Submit Request</h2>
+  <div class="card">
+    <input type="text" id="reqName" placeholder="Your Name">
+    <textarea id="reqMessage" rows="4" placeholder="Describe your project and deadline..."></textarea>
+    <div class="contact-buttons" style="display:flex; justify-content:center; gap:10px;">
+      <button class="btn email" onclick="sendRequest('email')">Email</button>
+      <button class="btn wa" onclick="sendRequest('wa')">WhatsApp</button>
     </div>
-  </section>
-
-  <section id="services" class="page">
-    <h2>My Services</h2>
-    <div class="card"><h3>🎨 Custom Art</h3><p>Personalized artwork for home décor or gifts.</p></div>
-    <div class="card"><h3>🖌️ Murals & Graffiti</h3><p>Hand-painted art for homes and businesses.</p></div>
-    <div class="card"><h3>✂️ Crafts & DIY</h3><p>Handmade clay, cardboard, and mixed media pieces.</p></div>
-    <div class="card"><h3>💻 Digital Art</h3><p>Illustrations for branding and social media.</p></div>
-  </section>
-
-  <section id="gallery" class="page">
-    <h2>Gallery</h2>
-    <p>Check out my latest work on Instagram!</p>
-    <a href="https://www.instagram.com/shamsartvibez" target="_blank" class="btn instagram">View Instagram Gallery</a>
-  </section>
-
-  <section id="estimate" class="page">
-    <h2>Price Estimator</h2>
-    <div class="card">
-      <label>Project Size</label>
-      <select id="project">
-        <option value="2500">Small (JMD $2,500+)</option>
-        <option value="4000">Medium (JMD $4,000+)</option>
-        <option value="6000">Large (JMD $6,000+)</option>
-      </select>
-      <label>Surface / Material</label>
-      <select id="surface">
-        <option value="0">Canvas / Clothing</option>
-        <option value="1500">Interior Wall</option>
-        <option value="2500">Exterior Wall</option>
-        <option value="1200">Clay Craft</option>
-        <option value="2500">Digital Poster</option>
-      </select>
-      <textarea id="estDesc" rows="3" placeholder="Briefly describe your idea..."></textarea>
-      <button class="btn submit" id="calculatePrice">Get Estimate</button>
-      <div class="result" id="priceResult">Result will appear here...</div>
-    </div>
-  </section>
-
-  <section id="qa" class="page">
-    <h2>Art Bot</h2>
-    <div class="card">
-      <input id="userQuestion" placeholder="Ask about prices, time, or murals...">
-      <button class="btn wa" onclick="botAnswer()">Ask Bot</button>
-      <div id="botAnswerBox"></div>
-    </div>
-  </section>
-
-  <section id="contact" class="page">
-    <h2>Submit Request</h2>
-    <div class="card">
-      <input type="text" id="reqName" placeholder="Your Name">
-      <textarea id="reqMessage" rows="4" placeholder="Describe your project and deadline..."></textarea>
-      <div class="contact-buttons">
-        <button class="btn email" onclick="sendRequest('email')">Email Me</button>
-        <button class="btn wa" onclick="sendRequest('wa')">WhatsApp Me</button>
-      </div>
-      <div id="submitResult" style="margin-top:10px; font-weight:bold;"></div>
-    </div>
-  </section>
+    <div id="submitResult" style="margin-top:10px; font-weight:bold; text-align:center;"></div>
+  </div>
+</section>
 </main>
 
 <footer>&copy; <span id="year"></span> SHAM'S ART VIBEZ</footer>
 
 <script>
-// Page Navigation
+// Navigation logic
 const navLinks = document.querySelectorAll('[data-target]');
 const sections = document.querySelectorAll('.page');
 
@@ -239,7 +221,8 @@ function showPage(id) {
   sections.forEach(s => s.classList.remove('active'));
   navLinks.forEach(l => l.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  document.querySelector(`[data-target="${id}"]`).classList.add('active');
+  const activeLink = document.querySelector(`[data-target="${id}"]`);
+  if(activeLink) activeLink.classList.add('active');
   window.scrollTo(0,0);
 }
 
@@ -250,48 +233,51 @@ navLinks.forEach(link => {
   });
 });
 
-// Mobile Nav
+// Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const navContainer = document.querySelector('.nav-container');
 hamburger.addEventListener('click', () => {
   navContainer.classList.toggle('show');
 });
 
-// Estimator Logic
+// Price Estimator
 document.getElementById('calculatePrice').addEventListener('click', () => {
-  const total = Number(document.getElementById('project').value) + Number(document.getElementById('surface').value);
-  document.getElementById('priceResult').innerText = `Estimated Starting Price: JMD $${total}\n(Final price may vary based on detail)`;
+  const project = Number(document.getElementById('project').value);
+  const surface = Number(document.getElementById('surface').value);
+  const total = project + surface;
+  document.getElementById('priceResult').innerText = `Estimated Starting Price: JMD $${total}\n(Final price depends on detail and supplies)`;
 });
 
 // Bot Logic
 function botAnswer() {
   const input = document.getElementById("userQuestion");
   const box = document.getElementById("botAnswerBox");
-  const q = input.value.toLowerCase();
+  const q = input.value.toLowerCase().trim();
   if(!q) return;
 
-  const userMsg = document.createElement("div");
-  userMsg.className = "user-message";
-  userMsg.innerText = input.value;
-  box.appendChild(userMsg);
+  const userBubble = document.createElement("div");
+  userBubble.className = "user-message";
+  userBubble.innerText = input.value;
+  box.appendChild(userBubble);
   
-  let msg = "I'm not sure about that. Try asking about 'prices', 'murals', or 'timelines'.";
-  if(q.includes("price") || q.includes("cost")) msg = "Prices vary by size! Small projects start around $2,500 JMD.";
-  else if(q.includes("time") || q.includes("long")) msg = "Most custom pieces take 1-3 weeks depending on my schedule.";
-  else if(q.includes("mural")) msg = "Yes! I do both indoor and outdoor murals.";
+  let answer = "I'm not sure about that. Try asking about 'prices', 'murals', or 'time'.";
+  if(q.includes("price") || q.includes("cost")) answer = "Prices start at $2,500 JMD. Use the Estimator tab for a quick quote!";
+  else if(q.includes("time") || q.includes("long")) answer = "Most projects take 1-3 weeks depending on my waiting list.";
+  else if(q.includes("mural")) answer = "Yes! I do both indoor and outdoor murals. Custom themes are welcome!";
+  else if(q.includes("craft")) answer = "I make custom crafts using clay, cardboard, and mixed media.";
 
-  const botMsg = document.createElement("div");
-  botMsg.className = "bot-message";
-  botMsg.innerText = msg;
-  setTimeout(() => { box.appendChild(botMsg); box.scrollTop = box.scrollHeight; }, 500);
+  const botBubble = document.createElement("div");
+  botBubble.className = "bot-message";
+  botBubble.innerText = answer;
+  setTimeout(() => { box.appendChild(botBubble); box.scrollTop = box.scrollHeight; }, 500);
   input.value = "";
 }
 
-// Contact Logic
+// Contact Submission
 function sendRequest(method) {
   const name = document.getElementById('reqName').value;
   const msg = document.getElementById('reqMessage').value;
-  if(!name || !msg) { alert("Please fill in your name and project details."); return; }
+  if(!name || !msg) { alert("Please fill in your name and details."); return; }
   
   const text = encodeURIComponent(`Hi Sham! My name is ${name}. I'm interested in: ${msg}`);
   if(method === 'email') {
@@ -301,7 +287,7 @@ function sendRequest(method) {
   }
 }
 
-// Visual Effects: Petals
+// Visual Effects
 for(let i=0; i<15; i++) {
   let p = document.createElement('div');
   p.className = 'petal';
@@ -311,8 +297,7 @@ for(let i=0; i<15; i++) {
   document.body.appendChild(p);
 }
 
-// Visual Effects: Floating Animal
-const animals = ["🦄","🐰","🐱","🐶","🐸","🐼"];
+const animals = ["🦄","🐰","🐱","🐶","🐸","🐼","🐹"];
 let aniIdx = 0;
 setInterval(() => {
   const a = document.getElementById('floatingAnimal');
@@ -320,11 +305,11 @@ setInterval(() => {
   a.style.left = Math.random() * 80 + 'vw';
   a.style.top = Math.random() * 80 + 'vh';
   a.style.opacity = 1;
-  setTimeout(() => a.style.opacity = 0, 1500);
+  setTimeout(() => a.style.opacity = 0, 1800);
   aniIdx = (aniIdx + 1) % animals.length;
 }, 3000);
 
-// Welcome Note
+// Welcome & Year
 window.onload = () => {
   if(!localStorage.getItem('seenWelcome')) {
     const note = document.getElementById('welcomeNote');
@@ -334,9 +319,12 @@ window.onload = () => {
   document.getElementById('year').innerText = new Date().getFullYear();
 };
 </script>
-
 </body>
 </html>
+
+
+
+
 
 
 
