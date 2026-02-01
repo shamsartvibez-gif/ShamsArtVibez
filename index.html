@@ -430,19 +430,13 @@ if(!localStorage.getItem('visited')){
   document.getElementById('welcomeNote').style.opacity = 1;
   setTimeout(()=>{ document.getElementById('welcomeNote').style.opacity = 0; },5000);
   localStorage.setItem('visited','true');
-}
-  function handleRequest() {
-  // This part sends the user's message (your existing code)
-  
-  // This part sends the automated reply
-  setTimeout(() => {
-    addBotMessage("Thank you for contacting Shams Art Vibez. I will be with you shortly.");
-  }, 1000); // Wait 1 second before replying
+  }
 }
 
 </script>
 </body>
 </html>
+
 
 
 
