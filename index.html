@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SHAM'S ART VIBEZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent:#00bfff;
+  --accent2:#ff69b4;
+  --purple:#b19cd9;
+  --diag-grad: linear-gradient(135deg,#87ceeb 0%, #b19cd9 100%);
+  --panel-bg: rgba(255,255,255,0.92);
+}
+
+
+
+* { box-sizing:border-box; margin:0; padding:0; }
+html, body { height:100%; }
+body {
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(135deg,#87ceeb,#b19cd9);
+  color:#111;
+  position:relative;
+  -webkit-font-smoothing:antialiased;
+}
+.bg {
+  position:absolute; top:0; left:0; width:100%; height:220vh;
+  background:url('logo.jpg') center/cover no-repeat;
+  filter:blur(18px) saturate(1.03);
+  opacity:0.18; z-index:0;
+}
+header {
+  background:#fff; text-align:center; padding:16px 14px;
+  border-bottom:3px solid rgba(177,156,217,0.85);
+  position:sticky; top:0; z-index:1400;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  animation:fadeDown .6s ease;
+}
+.header-top {
+  display:flex; align-items:center; justify-content:center; gap:12px; position:relative;
+}
+header h1 {
+  font-family:'Russo One',sans-serif; color:var(--purple); font-size:1.6rem;
+  animation: textPop 1s ease infinite alternate;
+}
+header p { color:#444; font-size:.95rem; }
+
+.nav-container { display:flex; justify-content:center; align-items:center; gap:16px; }
+.nav-container a {
+  text-decoration:none; color:var(--purple); font-weight:600; font-size:0.98rem;
+  padding:6px 8px; border-radius:6px; transition:color .18s, transform .18s;
+}
+.nav-container a:hover { color:var(--accent); transform:translateY(-2px); }
+.nav-container a.active { color:var(--accent); }
+
+.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 22px; cursor: pointer; z-index: 1500; margin-top: 6px; }
+.hamburger span { display: block; height: 3px; background: var(--purple); border-radius: 2px; transition: all 0.3s ease; }
+
+@media (max-width: 768px) {
+  .nav-container {
+    position: absolute; top: 80px; right: 0; width: 200px; background: var(--panel-bg);
+    flex-direction: column; align-items: stretch; gap: 0; padding: 0; border-left: 2px solid var(--purple);
+    box-shadow: -4px 0 12px rgba(0,0,0,0.15); display: none; animation: slideDown 0.3s ease forwards; z-index: 1500;
+  }
+  .nav-container.show { display: flex; }
+  .nav-container a { padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,0.08); font-size: 1.1rem; }
+  .hamburger { display: flex; }
+}
+
+@keyframes slideDown { from{opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);} }
+main { max-width:1100px; margin:32px auto; padding:32px 20px; background:var(--panel-bg); border-radius:12px; box-shadow:0 12px 30px rgba(0,0,0,0.09); position:relative; z-index:2; transition:opacity .45s ease; }
+section { display:none; animation:fadeUp .5s ease both; text-align:center; }
+section.active { display:block; }
+@keyframes fadeUp { from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)} }
+@keyframes fadeDown { from{opacity:0; transform:translateY(-20px)} to{opacity:1; transform:translateY(0)} }
+@keyframes textPop { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
+h2 { font-family:'Russo One',sans-serif; color:var(--accent); font-size:2.1rem; margin-bottom:12px; }
+p { font-size:1.03rem; color:#111; line-height:1.6; margin:0 auto 12px; max-width:880px; text-align:center; }
+
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px; }
+.gallery-item { background:rgba(255,255,255,0.96); border-radius:10px; padding:10px; box-shadow:0 6px 16px rgba(0,0,0,0.05); opacity:0; transform:translateY(20px); animation: fadeUp 0.5s forwards; }
+.gallery-item img { width:100%; border-radius:10px; cursor:pointer; transition:transform .18s; }
+.gallery-item img:hover { transform:scale(1.02); }
+.art-title { font-weight:700; color:var(--purple); margin-top:6px; }
+
+.btn { display:inline-block; margin:8px; padding:12px 18px; border-radius:25px; color:#fff; font-weight:700; text-decoration:none; transition:.25s; border: 2px solid #000; }
+.btn:hover { transform:translateY(-2px) scale(1.05); }
+.btn:active { transform:translateY(0) scale(0.95); }
+.btn.email { background:var(--accent); }
+.btn.wa { background:#ff69b4; }
+.btn.submit { background:linear-gradient(135deg,#ffb6c1,#ff69b4); }
+.btn.instagram { background:#C13584; }
+
+input, select, textarea { width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px; font-size:1rem; }
+.contact-buttons { display:flex; justify-content:center; gap:12px; margin-top:10px; }
+.result { background:#f2f2f2; padding:12px; border-radius:10px; font-weight:700; text-align:center; white-space:pre-line; opacity:1; }
+.card { background: rgba(255,255,255,0.95); padding:15px; border-radius:12px; margin-bottom:20px; }
+
+.rules li { opacity: 0; transform: translateY(10px); animation: fadeInUp 0.6s forwards; text-transform: uppercase; color:red; }
+.rules li:nth-child(1){ animation-delay: 0.2s; }
+.rules li:nth-child(2){ animation-delay: 0.4s; }
+.rules li:nth-child(3){ animation-delay: 0.6s; }
+
+@keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
+@keyframes logoFadeIn { to { opacity:1; transform: translateY(0); } }
+
+.petal { position: absolute; top: -10px; width: 15px; height: 25px; pointer-events: none; opacity: 0.9;
+  transform: rotate(0deg); animation: fall linear infinite; 
+  background: radial-gradient(circle at 50% 30%, #ffb6c1 0%, #ff69b4 70%, transparent 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; filter: drop-shadow(0 0 3px rgba(255,182,193,0.6));
+}
+@keyframes fall { 0% { transform: translateY(-20px) rotate(0deg); opacity:0.9; } 25% { transform: translate(15px, 25vh) rotate(45deg) scaleX(0.8); } 50% { transform: translate(-15px, 50vh) rotate(90deg) scaleX(1.1); } 75% { transform: translate(10px, 75vh) rotate(135deg) scaleX(0.9); } 100% { transform: translateY(110vh) rotate(180deg); opacity:0; } }
+
+.lightbox-overlay { position:fixed; inset:0; display:none; align-items:center; justify-content:center; flex-direction:column; background:rgba(0,0,0,0.85); z-index:5000; }
+.lightbox-overlay.show { display:flex; }
+.lightbox-img { max-width:90%; max-height:80vh; border-radius:10px; box-shadow:0 22px 46px rgba(0,0,0,0.6); opacity:0; transition:opacity .4s ease; }
+.lightbox-img.show { opacity:1; }
+.lightbox-caption { margin-top:12px; color:#fff; font-weight:600; text-align:center; max-width:90%; }
+
+footer { text-align:center; padding:14px; background:#fff; color:var(--purple); font-weight:700; margin-top:18px; border-top:3px solid rgba(177,156,217,0.85); }
+
+#floatingAnimal { position: fixed; font-size: 2.5rem; z-index:5500; transition: transform 2s ease, left 2s ease, top 2s ease; }
+
+#welcomeNote { position: fixed; top:50%; left:50%; transform:translate(-50%,-50%); background: rgba(255,255,255,0.95); padding:20px 30px; border-radius:15px; font-size:1.5rem; font-weight:700; color:var(--purple); text-align:center; z-index:6000; opacity:0; animation: welcomeFade 5s ease forwards; }
+@keyframes welcomeFade { 0%{opacity:0; transform:translate(-50%, -60%) scale(0.9)} 10%{opacity:1; transform:translate(-50%, -50%) scale(1)} 90%{opacity:1; transform:translate(-50%, -50%) scale(1)} 100%{opacity:0; transform:translate(-50%, -40%) scale(0.9)} }
+
+.typing-animal { position: absolute; font-size: 1.2rem; pointer-events: none; opacity: 1; transition: transform 1s ease, opacity 1s ease; z-index: 7000; }
+
+#botAnswerBox{ background:#f9f9f9; border:1px solid #ccc; border-radius:12px; padding:12px; margin-top:10px; max-height:280px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; }
+.user-message{ background:#ffd6e8; color:#000; padding:10px 14px; border-radius:14px; max-width:80%; align-self:flex-end; white-space:pre-line; line-height:1.4; }
+.bot-message{ background:#e4dcff; color:#000; padding:10px 14px; border-radius:14px; max-width:80%; align-self:flex-start; white-space:pre-line; line-height:1.4; }
+</style>
+<body>
+<div class="bg"></div>
+
+<div id="welcomeNote">🎉 Welcome to SHAM'S ART VIBEZ! 🎨<br>Let's create something amazing!</div>
+<div id="floatingAnimal">🦄</div>
+
+<header>
+  <div class="header-top">
+    <div class="paint-left">🎨💦</div>
+    <h1>SHAM'S ART VIBEZ</h1>
+    <div class="paint-right">💦🎨</div>
+  </div>
+  <p>Graffiti • Murals • Crafts • Digital Art</p>
+  <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
+  <nav>
+    <div class="nav-container">
+      <a href="#home" class="active" data-target="home">Home</a>
+      <a href="#services" data-target="services">Services</a>
+      <a href="#gallery" data-target="gallery">Gallery</a>
+      <a href="#estimate" data-target="estimate">Estimator</a>
+      <a href="#qa" data-target="qa">Q&A Bot</a>
+      <a href="#contact" data-target="contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main id="mainContent">
+<!-- Home -->
+<section id="home" class="page active">
+  <h2>Welcome to SHAM'S ART VIBEZ</h2>
+  <p>Where creativity comes to life 🎨✨ I specialize in custom murals, graffiti, crafts, and digital art made with love and detail.</p>
+  <p>Take a look around, explore my work, and feel free to send in your request when you're ready 💜</p>
+  <div class="card" style="border:2px solid red;">
+    <h3 style="color:red; font-family:'Russo One',sans-serif; text-align:center; margin-bottom:10px;">⚠ IMPORTANT NOTICE</h3>
+    <ul style="list-style:disc; text-align:left; max-width:600px; margin:0 auto; color:#111;">
+      <li><strong>Send request as soon as you have one</strong></li>
+      <li>Work usually takes time depending on the waiting period if I have other requests</li>
+      <li>Send daily checks and updates on your request</li>
+      <li>If you have your own supplies, a price off will be given</li>
+      <li>Please keep in mind that I also have a full-time job</li>
+      <li><strong>No free work / labour</strong></li>
+      <li><strong>Pay before you collect</strong></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="page">
+  <h2>My Services</h2>
+  <p>I offer creative, custom-made artwork tailored to your vision 🎨 Every project is handled with care, patience, and attention to detail.</p>
+  <div class="services-grid">
+    <div class="card"><h3>🎨 Custom Art</h3><p>Personalized artwork designed just for you. Perfect for gifts, home décor, or special occasions.</p></div>
+    <div class="card"><h3>🖌️ Murals & Graffiti</h3><p>Hand-painted murals and graffiti art for homes, businesses, events, and creative spaces.</p></div>
+    <div class="card"><h3>✂️ Crafts & DIY</h3><p>Handmade crafts and creative DIY pieces made with love and detail.</p></div>
+    <div class="card"><h3>💻 Digital Art</h3><p>Digital illustrations and designs for printing, branding, or online use.</p></div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="page">
+<h2>Gallery</h2>
+<div class="gallery-grid" id="galleryGrid">
+<div style="text-align:center; margin-top:16px;">
+  <a href="https://www.instagram.com/shamsartvibez" target="_blank" class="btn instagram">View Instagram Gallery</a>
+</div>
+</section>
+
+<!-- Estimator -->
+<section id="estimate" class="page">
+<h2>Price Estimator</h2>
+<div class="card">
+  <label>Project Size</label>
+  <select id="project">
+    <option value="2500">Small</option>
+    <option value="4000">Medium</option>
+    <option value="6000">Large</option>
+  </select>
+  <label>Surface / Material</label>
+  <select id="surface">
+    <option value="0">Canvas / Clothing</option>
+    <option value="1500">Interior Wall</option>
+    <option value="2500">Exterior Wall</option>
+    <option value="1200">Clay Craft</option>
+    <option value="800">Cardboard Craft</option>
+    <option value="600">Paper Art</option>
+    <option value="2000">Mixed Materials</option>
+    <option value="2500">Digital Poster</option>
+  </select>
+  <label>Upload Reference Image (optional)</label>
+  <input type="file" id="refImage">
+  <img id="imagePreview" style="margin-top:10px;max-width:100%;border-radius:10px;display:none;" alt="Preview">
+  <label>Describe Your Idea</label>
+  <textarea rows="4" placeholder="Describe your idea, deadline, etc."></textarea>
+  <button class="btn submit" id="calculatePrice">Get Estimate</button>
+  <div class="result" id="priceResult"></div>
+</div>
+</section>
+
+<!-- Q&A Bot -->
+<section id="qa" class="page">
+<h2>Ask Our Art Bot</h2>
+<div class="card">
+  <div class="robot">🤖</div>
+  <label>Your Question</label>
+  <input id="userQuestion" placeholder="Type your question here...">
+  <button class="btn wa" onclick="botAnswer()">Ask</button>
+  <div class="chat-box" id="botAnswerBox"></div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="page">
+<h2>Contact / Submit Your Request</h2>
+<div class="card contact-card">
+  <label>Name</label>
+  <input type="text" id="reqName" placeholder="Your Name">
+  <label>Project Details</label>
+  <textarea id="reqMessage" rows="4" placeholder="Describe your idea, deadline, etc."></textarea>
+  <label>Upload Reference Image (optional)</label>
+  <input type="file" id="reqImage">
+  <div class="contact-buttons">
+    <a class="btn email" href="#" onclick="sendRequest('email')">Send via Email</a>
+    <a id="waLink" class="btn wa" href="#" target="_blank" onclick="sendRequest('wa')">Send via WhatsApp</a>
+  </div>
+  <div class="result" id="submitResult" style="position:relative; font-weight:700;"></div>
+</div>
+</section>
+
+</main>
+<footer>&copy; <span id="year"></span> SHAM'S ART VIBEZ</footer>
+
+<script>
+// Navigation
+const navLinks=document.querySelectorAll('[data-target]');
+const pages=document.querySelectorAll('main section.page');
+function showPage(id){
+  navLinks.forEach(a=>a.classList.toggle('active',a.dataset.target===id));
+  pages.forEach(s=>s.style.display=(s.id===id)?'block':'none');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+navLinks.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();showPage(a.dataset.target)}));
+showPage('home');
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navContainer = document.querySelector('.nav-container');
+hamburger.addEventListener('click', () => {
+  navContainer.classList.toggle('show');
+  hamburger.classList.toggle('open');
+  if(hamburger.classList.contains('open')){
+    hamburger.querySelectorAll('span').forEach((s,i)=>{
+      if(i===0) s.style.transform='rotate(45deg) translate(5px,5px)';
+      if(i===1) s.style.opacity='0';
+      if(i===2) s.style.transform='rotate(-45deg) translate(5px,-5px)';
+    });
+  } else {
+    hamburger.querySelectorAll('span').forEach(s=>{ s.style.transform='rotate(0) translate(0,0)'; s.style.opacity='1'; });
+  }
+});
+navLinks.forEach(a => {
+  a.addEventListener('click', () => {
+    if(navContainer.classList.contains('show')){
+      navContainer.classList.remove('show');
+      hamburger.classList.remove('open');
+      hamburger.querySelectorAll('span').forEach(s=>{ s.style.transform='rotate(0) translate(0,0)'; s.style.opacity='1'; });
+    }
+  });
+});
+
+// Price Estimator
+const projectSelect = document.getElementById('project');
+const surfaceSelect = document.getElementById('surface');
+const refImageInput = document.getElementById('refImage');
+const imagePreview = document.getElementById('imagePreview');
+const priceResult = document.getElementById('priceResult');
+
+refImageInput.addEventListener('change', (e)=>{
+    const file = e.target.files[0];
+    if(file){
+        const reader = new FileReader();
+        reader.onload = function(ev){
+            imagePreview.src = ev.target.result;
+            imagePreview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    } else {
+        imagePreview.src = '';
+        imagePreview.style.display = 'none';
+    }
+});
+
+document.getElementById('calculatePrice').addEventListener('click', ()=>{
+    let projectCost = Number(projectSelect.value);
+    let surfaceCost = Number(surfaceSelect.value);
+    let total = projectCost + surfaceCost;
+    let description = document.querySelector('#estimate textarea').value;
+    let descText = description ? "\n\nYour Description:\n" + description : "";
+    let imageText = refImageInput.files[0] ? "\nReference Image included." : "";
+    priceResult.innerText = "Estimated Price: JMD $" + total + descText + imageText;
+});
+
+// Q&A Bot
+function botAnswer(){
+  const input = document.getElementById("userQuestion");
+  const botBox = document.getElementById("botAnswerBox");
+  const question = input.value.trim();
+  if(!question) return;
+  const userBubble = document.createElement("div");
+  userBubble.className = "user-message";
+  userBubble.innerText = question;
+  botBox.appendChild(userBubble);
+  botBox.scrollTop = botBox.scrollHeight;
+  input.value = "";
+
+  let answer = "Sorry, I don’t understand yet.\nTry asking about prices, murals, posters, crafts, or timelines.";
+  const q = question.toLowerCase();
+  if(q.includes("price") || q.includes("cost")) answer = "Prices depend on size, material, and design.\nUse the estimator for a quick idea 💰";
+  else if(q.includes("how long") || q.includes("time")) answer = "Most projects take 1–3 weeks.\nLarge or detailed work may take longer ⏳";
+  else if(q.includes("mural")) answer = "Yes! I create indoor and outdoor murals.\nCustom themes are welcome 🎨";
+  else if(q.includes("poster")) answer = "I design digital posters for events, socials, and promotions 📱";
+  else if(q.includes("craft")) answer = "I make handmade crafts using clay, cardboard, paper, and mixed media ✂️";
+  else if(q.includes("contact")) answer = "You can contact me via Email or WhatsApp using the Contact section 📩";
+  else if(q.includes("done") || q.includes("finished")) answer = "Your request is being processed.\nI will contact you once it is ready ✅";
+
+  const botBubble = document.createElement("div");
+  botBubble.className = "bot-message";
+  botBox.appendChild(botBubble);
+  let i=0; (function type(){ if(i < answer.length){ botBubble.innerHTML += answer[i]==="\n"? "<br>":answer[i]; botBox.scrollTop = botBox.scrollHeight; i++; setTimeout(type,30); } })();
+}
+
+// Trigger botAnswer() when pressing Enter
+const userInput = document.getElementById('userQuestion');
+userInput.addEventListener('keypress', function(e) {
+  if(e.key === 'Enter'){
+    e.preventDefault();
+    botAnswer();
+  }
+});
+
+// Contact Request
+function sendRequest(method){
+  const name = document.getElementById('reqName').value.trim();
+  const message = document.getElementById('reqMessage').value.trim();
+  const file = document.getElementById('reqImage').files[0];
+  const submitResult = document.getElementById('submitResult');
+  if(!name || !message){ submitResult.innerText="Please fill all required fields."; return; }
+
+  let body = `Name: ${name}\nMessage:\n${message}`;
+  if(file) body += `\nReference image included.`;
+
+  if(method === 'email'){
+    const subject = encodeURIComponent("New Art Request from "+name);
+    const mailtoLink = `mailto:shamsartvibez@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoLink,'_blank');
+  } else {
+    const waLink = `https://wa.me/18765696557?text=${encodeURIComponent(body)}`;
+    window.open(waLink,'_blank');
+  }
+  submitResult.innerText = "Ready! Use WhatsApp or Email to submit.";
+}
+
+// Footer Year
+document.getElementById('year').innerText=new Date().getFullYear();
+
+// Cherry blossom petals
+for(let i=0;i<15;i++){
+  let petal=document.createElement('div');petal.className='petal';
+  petal.style.left=Math.random()*100+'%';
+  petal.style.animationDuration=(4+Math.random()*5)+'s';
+  petal.style.animationDelay=(Math.random()*5)+'s';
+  document.body.appendChild(petal);
+}
+
+// Floating Animal - one at a time like original
+const floatingAnimal = document.getElementById('floatingAnimal');
+const animals = ["🦄","🐰","🐱","🐶","🐸","🐼","🐹","🦊","🐨","🐤"];
+let currentAnimalIndex = 0;
+function floatNextAnimal(){
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const x = Math.random() * (vw - 50);
+  const y = Math.random() * (vh - 50);
+  floatingAnimal.style.left = `${x}px`;
+  floatingAnimal.style.top = `${y}px`;
+  floatingAnimal.style.opacity = 1;
+  floatingAnimal.style.transition = "all 2s ease";
+  floatingAnimal.innerText = animals[currentAnimalIndex];
+  currentAnimalIndex = (currentAnimalIndex + 1) % animals.length;
+  setTimeout(()=>{ floatingAnimal.style.opacity = 0; }, 1800);
+}
+floatNextAnimal();
+setInterval(floatNextAnimal, 2200);
+
+// Welcome Note
+if(!localStorage.getItem('visited')){
+  document.getElementById('welcomeNote').style.opacity = 1;
+  setTimeout(()=>{ document.getElementById('welcomeNote').style.opacity = 0; },5000);
+  localStorage.setItem('visited','true');
+}
+</script>
+</body>
+</html>
+
+
+
+
