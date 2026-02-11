@@ -476,9 +476,63 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
     <input type="text" id="reqName" placeholder="Your Name">
 
-    <label>Project Details</label>
+
+
+    <!-- Added Estimator Options Here -->
+
+    <label>Project Size</label>
+
+    <select id="contactProject">
+
+      <option value="2500">Small</option>
+
+      <option value="4000">Medium</option>
+
+      <option value="6000">Large</option>
+
+    </select>
+
+
+
+    <label>Surface / Material</label>
+
+    <select id="contactSurface">
+
+      <option value="0">Canvas / Clothing</option>
+
+      <option value="1500">Interior Wall</option>
+
+      <option value="2500">Exterior Wall</option>
+
+      <option value="1200">Clay Craft</option>
+
+      <option value="800">Cardboard Craft</option>
+
+      <option value="600">Paper Art</option>
+
+      <option value="2000">Mixed Materials</option>
+
+      <option value="2500">Digital Poster</option>
+
+    </select>
+
+
+
+    <div class="checkbox-container">
+
+      <input type="checkbox" id="contactOwnSupply">
+
+      <label for="contactOwnSupply">I have my own supplies for a price off</label>
+
+    </div>
+
+
+
+    <label>Project Details / Message</label>
 
     <textarea id="reqMessage" rows="4" placeholder="Describe your idea, deadline, etc."></textarea>
+
+
 
     <div class="contact-buttons">
 
@@ -495,6 +549,8 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
   </div>
 
 </section>
+
+
 
 
 
@@ -716,19 +772,29 @@ function sendRequest(method){
 
 
 
-  let projectSize = projectSelect.options[projectSelect.selectedIndex].text;
+  // Use contact fields
 
-  let surface = surfaceSelect.options[surfaceSelect.selectedIndex].text;
+  const projectSelectEl = document.getElementById('contactProject') || projectSelect;
 
-  let price = Number(projectSelect.value)+Number(surfaceSelect.value);
+  const surfaceSelectEl = document.getElementById('contactSurface') || surfaceSelect;
 
-  let discountPrice = ownSupplyCheckbox.checked ? Math.round(price*0.85) : price;
+  const ownSupplyEl = document.getElementById('contactOwnSupply') || ownSupplyCheckbox;
 
 
 
-  let body = `Name: ${name}\nRequest: ${surface}\nMessage: ${message}\nSize: ${projectSize}\nEstimated Price: $${price}`;
+  let projectSize = projectSelectEl.options[projectSelectEl.selectedIndex].text;
 
-  if(ownSupplyCheckbox.checked) body += `\nEstimated Price Off: $${discountPrice}`;
+  let surface = surfaceSelectEl.options[surfaceSelectEl.selectedIndex].text;
+
+  let price = Number(projectSelectEl.value)+Number(surfaceSelectEl.value);
+
+  let discountPrice = ownSupplyEl.checked ? Math.round(price*0.85) : price;
+
+
+
+  let body = `Name: ${name}\nProject Size: ${projectSize}\nSurface / Material: ${surface}\nMessage: ${message}\nEstimated Price: $${price}`;
+
+  if(ownSupplyEl.checked) body += `\nEstimated Price Off: $${discountPrice}`;
 
 
 
@@ -736,7 +802,7 @@ function sendRequest(method){
 
   let history = JSON.parse(localStorage.getItem('history')||'[]');
 
-  history.push({name:name, request:surface, message:message, size:projectSize, price:price, priceOff:ownSupplyCheckbox.checked ? discountPrice : null});
+  history.push({name:name, request:surface, message:message, size:projectSize, price:price, priceOff:ownSupplyEl.checked ? discountPrice : null});
 
   localStorage.setItem('history',JSON.stringify(history));
 
@@ -767,6 +833,8 @@ function sendRequest(method){
   submitResult.innerText = "Ready! Use WhatsApp or Email to submit.";
 
 }
+
+
 
 
 
@@ -888,6 +956,12 @@ if(lastUser){
 
 </html>
 
+
+
+
+
+
+
  
 
 
@@ -897,6 +971,7 @@ if(lastUser){
 
 
  
+
 
 
 
