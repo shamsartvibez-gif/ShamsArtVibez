@@ -28,12 +28,6 @@
 
 }
 
-
-
-
-
-
-
 * { box-sizing:border-box; margin:0; padding:0; }
 
 html, body { height:100%; }
@@ -94,8 +88,6 @@ header h1 {
 
 header p { color:#444; font-size:.95rem; }
 
-
-
 .nav-container { display:flex; justify-content:center; align-items:center; gap:16px; }
 
 .nav-container a {
@@ -110,13 +102,9 @@ header p { color:#444; font-size:.95rem; }
 
 .nav-container a.active { color:var(--accent); }
 
-
-
 .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 22px; cursor: pointer; z-index: 1500; margin-top: 6px; }
 
 .hamburger span { display: block; height: 3px; background: var(--purple); border-radius: 2px; transition: all 0.3s ease; }
-
-
 
 @media (max-width: 768px) {
 
@@ -138,8 +126,6 @@ header p { color:#444; font-size:.95rem; }
 
 }
 
-
-
 @keyframes slideDown { from{opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);} }
 
 main { max-width:1100px; margin:32px auto; padding:32px 20px; background:var(--panel-bg); border-radius:12px; box-shadow:0 12px 30px rgba(0,0,0,0.09); position:relative; z-index:2; transition:opacity .45s ease; }
@@ -158,8 +144,6 @@ h2 { font-family:'Russo One',sans-serif; color:var(--accent); font-size:2.1rem; 
 
 p { font-size:1.03rem; color:#111; line-height:1.6; margin:0 auto 12px; max-width:880px; text-align:center; }
 
-
-
 .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px; }
 
 .gallery-item { background:rgba(255,255,255,0.96); border-radius:10px; padding:10px; box-shadow:0 6px 16px rgba(0,0,0,0.05); opacity:0; transform:translateY(20px); animation: fadeUp 0.5s forwards; }
@@ -170,9 +154,7 @@ p { font-size:1.03rem; color:#111; line-height:1.6; margin:0 auto 12px; max-widt
 
 .art-title { font-weight:700; color:var(--purple); margin-top:6px; }
 
-
-
-.btn { display:inline-block; margin:8px; padding:12px 18px; border-radius:25px; color:#fff; font-weight:700; text-decoration:none; transition:.25s; border: 2px solid #000; }
+.btn { display:inline-block; margin:8px; padding:12px 18px; border-radius:25px; color:#fff; font-weight:700; text-decoration:none; transition:.25s; border: 2px solid #000; cursor:pointer; text-align:center; }
 
 .btn:hover { transform:translateY(-2px) scale(1.05); }
 
@@ -186,17 +168,13 @@ p { font-size:1.03rem; color:#111; line-height:1.6; margin:0 auto 12px; max-widt
 
 .btn.instagram { background:#C13584; }
 
-
-
 input, select, textarea { width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px; font-size:1rem; }
 
-.contact-buttons { display:flex; justify-content:center; gap:12px; margin-top:10px; }
+.contact-buttons { display:flex; justify-content:center; gap:12px; margin-top:10px; flex-wrap:wrap; }
 
 .result { background:#f2f2f2; padding:12px; border-radius:10px; font-weight:700; text-align:center; white-space:pre-line; opacity:1; }
 
-.card { background: rgba(255,255,255,0.95); padding:15px; border-radius:12px; margin-bottom:20px; }
-
-
+.card { background: rgba(255,255,255,0.95); padding:15px; border-radius:12px; margin-bottom:20px; text-align:left; }
 
 .rules li { opacity: 0; transform: translateY(10px); animation: fadeInUp 0.6s forwards; text-transform: uppercase; color:red; }
 
@@ -206,13 +184,9 @@ input, select, textarea { width:100%; padding:10px; border-radius:8px; border:1p
 
 .rules li:nth-child(3){ animation-delay: 0.6s; }
 
-
-
 @keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
 
 @keyframes logoFadeIn { to { opacity:1; transform: translateY(0); } }
-
-
 
 .petal { position: absolute; top: -10px; width: 15px; height: 25px; pointer-events: none; opacity: 0.9;
 
@@ -226,8 +200,6 @@ input, select, textarea { width:100%; padding:10px; border-radius:8px; border:1p
 
 @keyframes fall { 0% { transform: translateY(-20px) rotate(0deg); opacity:0.9; } 25% { transform: translate(15px, 25vh) rotate(45deg) scaleX(0.8); } 50% { transform: translate(-15px, 50vh) rotate(90deg) scaleX(1.1); } 75% { transform: translate(10px, 75vh) rotate(135deg) scaleX(0.9); } 100% { transform: translateY(110vh) rotate(180deg); opacity:0; } }
 
-
-
 .lightbox-overlay { position:fixed; inset:0; display:none; align-items:center; justify-content:center; flex-direction:column; background:rgba(0,0,0,0.85); z-index:5000; }
 
 .lightbox-overlay.show { display:flex; }
@@ -238,25 +210,15 @@ input, select, textarea { width:100%; padding:10px; border-radius:8px; border:1p
 
 .lightbox-caption { margin-top:12px; color:#fff; font-weight:600; text-align:center; max-width:90%; }
 
-
-
 footer { text-align:center; padding:14px; background:#fff; color:var(--purple); font-weight:700; margin-top:18px; border-top:3px solid rgba(177,156,217,0.85); }
 
-
-
 #floatingAnimal { position: fixed; font-size: 2.5rem; z-index:5500; transition: transform 2s ease, left 2s ease, top 2s ease; }
-
-
 
 #welcomeNote { position: fixed; top:50%; left:50%; transform:translate(-50%,-50%); background: rgba(255,255,255,0.95); padding:20px 30px; border-radius:15px; font-size:1.5rem; font-weight:700; color:var(--purple); text-align:center; z-index:6000; opacity:0; animation: welcomeFade 5s ease forwards; }
 
 @keyframes welcomeFade { 0%{opacity:0; transform:translate(-50%, -60%) scale(0.9)} 10%{opacity:1; transform:translate(-50%, -50%) scale(1)} 90%{opacity:1; transform:translate(-50%, -50%) scale(1)} 100%{opacity:0; transform:translate(-50%, -40%) scale(0.9)} }
 
-
-
 .typing-animal { position: absolute; font-size: 1.2rem; pointer-events: none; opacity: 1; transition: transform 1s ease, opacity 1s ease; z-index: 7000; }
-
-
 
 #botAnswerBox{ background:#f9f9f9; border:1px solid #ccc; border-radius:12px; padding:12px; margin-top:10px; max-height:280px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; }
 
@@ -264,13 +226,17 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
 .bot-message{ background:#e4dcff; color:#000; padding:10px 14px; border-radius:14px; max-width:80%; align-self:flex-start; white-space:pre-line; line-height:1.4; }
 
+.checkbox-container { display:flex; align-items:center; gap:10px; margin-top:6px; font-weight:600; font-size:1rem; cursor:pointer; }
+
+.checkbox-container input[type="checkbox"]{ width:20px; height:20px; cursor:pointer; }
+
+.history-card { background:#f9f9f9; padding:12px; border-radius:10px; margin-bottom:12px; font-size:0.95rem; }
+
 </style>
 
 <body>
 
 <div class="bg"></div>
-
-
 
 <div id="welcomeNote">🎉 Welcome to SHAM'S ART VIBEZ! 🎨<br>Let's create something amazing!</div>
 
@@ -310,6 +276,8 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
       <a href="#contact" data-target="contact">Contact</a>
 
+      <a href="#history" data-target="history">History</a>
+
     </div>
 
   </nav>
@@ -319,6 +287,8 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
 
 <main id="mainContent">
+
+
 
 <!-- Home -->
 
@@ -386,17 +356,21 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
 <section id="gallery" class="page">
 
-<h2>Gallery</h2>
+  <h2>Gallery</h2>
 
-<div class="gallery-grid" id="galleryGrid">
+  <div class="gallery-grid" id="galleryGrid">
 
-<div style="text-align:center; margin-top:16px;">
+    <div style="text-align:center; margin-top:16px;">
 
-  <a href="https://www.instagram.com/shamsartvibez" target="_blank" class="btn instagram">View Instagram Gallery</a>
+      <a href="https://www.instagram.com/shamsartvibez" target="_blank" class="btn instagram" style="padding:18px 24px; font-size:1.2rem;">View Instagram Gallery</a>
 
-</div>
+    </div>
+
+  </div>
 
 </section>
+
+
 
 
 
@@ -404,59 +378,65 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
 <section id="estimate" class="page">
 
-<h2>Price Estimator</h2>
+  <h2>Price Estimator</h2>
 
-<div class="card">
+  <div class="card">
 
-  <label>Project Size</label>
+    <label>Project Size</label>
 
-  <select id="project">
+    <select id="project">
 
-    <option value="2500">Small</option>
+      <option value="2500">Small</option>
 
-    <option value="4000">Medium</option>
+      <option value="4000">Medium</option>
 
-    <option value="6000">Large</option>
+      <option value="6000">Large</option>
 
-  </select>
+    </select>
 
-  <label>Surface / Material</label>
+    <label>Surface / Material</label>
 
-  <select id="surface">
+    <select id="surface">
 
-    <option value="0">Canvas / Clothing</option>
+      <option value="0">Canvas / Clothing</option>
 
-    <option value="1500">Interior Wall</option>
+      <option value="1500">Interior Wall</option>
 
-    <option value="2500">Exterior Wall</option>
+      <option value="2500">Exterior Wall</option>
 
-    <option value="1200">Clay Craft</option>
+      <option value="1200">Clay Craft</option>
 
-    <option value="800">Cardboard Craft</option>
+      <option value="800">Cardboard Craft</option>
 
-    <option value="600">Paper Art</option>
+      <option value="600">Paper Art</option>
 
-    <option value="2000">Mixed Materials</option>
+      <option value="2000">Mixed Materials</option>
 
-    <option value="2500">Digital Poster</option>
+      <option value="2500">Digital Poster</option>
 
-  </select>
+    </select>
 
-  <label>Upload Reference Image (optional)</label>
 
-  <input type="file" id="refImage">
 
-  <img id="imagePreview" style="margin-top:10px;max-width:100%;border-radius:10px;display:none;" alt="Preview">
+    <div class="checkbox-container">
 
-  <label>Describe Your Idea</label>
+      <input type="checkbox" id="ownSupply">
 
-  <textarea rows="4" placeholder="Describe your idea, deadline, etc."></textarea>
+      <label for="ownSupply">I have my own supplies for a price off</label>
 
-  <button class="btn submit" id="calculatePrice">Get Estimate</button>
+    </div>
 
-  <div class="result" id="priceResult"></div>
 
-</div>
+
+    <label>Describe Your Idea</label>
+
+    <textarea rows="4" placeholder="Describe your idea, deadline, etc."></textarea>
+
+    <button class="btn submit" id="calculatePrice">Get Estimate</button>
+
+    <div class="result" id="priceResult"></div>
+
+  </div>
 
 </section>
 
@@ -466,21 +446,19 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
 <section id="qa" class="page">
 
-<h2>Ask Our Art Bot</h2>
+  <h2>Ask Our Art Bot</h2>
 
-<div class="card">
+  <div class="card">
 
-  <div class="robot">🤖</div>
+    <div class="robot">🤖</div>
 
-  <label>Your Question</label>
+    <label>Your Question</label>
 
-  <input id="userQuestion" placeholder="Type your question here...">
+    <input id="userQuestion" placeholder="Type your question here...">
 
-  <button class="btn wa" onclick="botAnswer()">Ask</button>
+    <div class="chat-box" id="botAnswerBox"></div>
 
-  <div class="chat-box" id="botAnswerBox"></div>
-
-</div>
+  </div>
 
 </section>
 
@@ -490,39 +468,51 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
 <section id="contact" class="page">
 
-<h2>Contact / Submit Your Request</h2>
+  <h2>Contact / Submit Your Request</h2>
 
-<div class="card contact-card">
+  <div class="card contact-card">
 
-  <label>Name</label>
+    <label>Name</label>
 
-  <input type="text" id="reqName" placeholder="Your Name">
+    <input type="text" id="reqName" placeholder="Your Name">
 
-  <label>Project Details</label>
+    <label>Project Details</label>
 
-  <textarea id="reqMessage" rows="4" placeholder="Describe your idea, deadline, etc."></textarea>
+    <textarea id="reqMessage" rows="4" placeholder="Describe your idea, deadline, etc."></textarea>
 
-  <label>Upload Reference Image (optional)</label>
+    <div class="contact-buttons">
 
-  <input type="file" id="reqImage">
+      <a class="btn email" href="#" onclick="sendRequest('email')">Send via Email</a>
 
-  <div class="contact-buttons">
+      <a id="waLink" class="btn wa" href="#" target="_blank" onclick="sendRequest('wa')">Send via WhatsApp</a>
 
-    <a class="btn email" href="#" onclick="sendRequest('email')">Send via Email</a>
+      <a class="btn instagram" href="https://www.instagram.com/shamsartvibez" target="_blank">Instagram</a>
 
-    <a id="waLink" class="btn wa" href="#" target="_blank" onclick="sendRequest('wa')">Send via WhatsApp</a>
+    </div>
+
+    <div class="result" id="submitResult" style="position:relative; font-weight:700;"></div>
 
   </div>
 
-  <div class="result" id="submitResult" style="position:relative; font-weight:700;"></div>
+</section>
 
-</div>
+
+
+<!-- History -->
+
+<section id="history" class="page">
+
+  <h2>Past Requests</h2>
+
+  <div id="historyList"></div>
 
 </section>
 
 
 
 </main>
+
+
 
 <footer>&copy; <span id="year"></span> SHAM'S ART VIBEZ</footer>
 
@@ -543,6 +533,8 @@ function showPage(id){
   pages.forEach(s=>s.style.display=(s.id===id)?'block':'none');
 
   window.scrollTo({top:0,behavior:'smooth'});
+
+  if(id==="history") renderHistory();
 
 }
 
@@ -610,41 +602,9 @@ const projectSelect = document.getElementById('project');
 
 const surfaceSelect = document.getElementById('surface');
 
-const refImageInput = document.getElementById('refImage');
-
-const imagePreview = document.getElementById('imagePreview');
+const ownSupplyCheckbox = document.getElementById('ownSupply');
 
 const priceResult = document.getElementById('priceResult');
-
-
-
-refImageInput.addEventListener('change', (e)=>{
-
-    const file = e.target.files[0];
-
-    if(file){
-
-        const reader = new FileReader();
-
-        reader.onload = function(ev){
-
-            imagePreview.src = ev.target.result;
-
-            imagePreview.style.display = 'block';
-
-        }
-
-        reader.readAsDataURL(file);
-
-    } else {
-
-        imagePreview.src = '';
-
-        imagePreview.style.display = 'none';
-
-    }
-
-});
 
 
 
@@ -656,13 +616,21 @@ document.getElementById('calculatePrice').addEventListener('click', ()=>{
 
     let total = projectCost + surfaceCost;
 
+    let discount = ownSupplyCheckbox.checked ? Math.round(total*0.85) : total;
+
     let description = document.querySelector('#estimate textarea').value;
 
-    let descText = description ? "\n\nYour Description:\n" + description : "";
+    priceResult.innerText = "Estimated Price: JMD $" + total +
 
-    let imageText = refImageInput.files[0] ? "\nReference Image included." : "";
+        (ownSupplyCheckbox.checked ? "\nPrice with Supply Discount: JMD $" + discount : "") +
 
-    priceResult.innerText = "Estimated Price: JMD $" + total + descText + imageText;
+        (description ? "\n\nYour Description:\n" + description : "");
+
+
+
+    // Auto-fill contact
+
+    document.getElementById('reqMessage').value = description;
 
 });
 
@@ -724,21 +692,11 @@ function botAnswer(){
 
 }
 
-
-
-// Trigger botAnswer() when pressing Enter
-
 const userInput = document.getElementById('userQuestion');
 
 userInput.addEventListener('keypress', function(e) {
 
-  if(e.key === 'Enter'){
-
-    e.preventDefault();
-
-    botAnswer();
-
-  }
+  if(e.key === 'Enter'){ e.preventDefault(); botAnswer(); }
 
 });
 
@@ -752,17 +710,41 @@ function sendRequest(method){
 
   const message = document.getElementById('reqMessage').value.trim();
 
-  const file = document.getElementById('reqImage').files[0];
-
   const submitResult = document.getElementById('submitResult');
 
   if(!name || !message){ submitResult.innerText="Please fill all required fields."; return; }
 
 
 
-  let body = `Name: ${name}\nMessage:\n${message}`;
+  let projectSize = projectSelect.options[projectSelect.selectedIndex].text;
 
-  if(file) body += `\nReference image included.`;
+  let surface = surfaceSelect.options[surfaceSelect.selectedIndex].text;
+
+  let price = Number(projectSelect.value)+Number(surfaceSelect.value);
+
+  let discountPrice = ownSupplyCheckbox.checked ? Math.round(price*0.85) : price;
+
+
+
+  let body = `Name: ${name}\nRequest: ${surface}\nMessage: ${message}\nSize: ${projectSize}\nEstimated Price: $${price}`;
+
+  if(ownSupplyCheckbox.checked) body += `\nEstimated Price Off: $${discountPrice}`;
+
+
+
+  // Save to history
+
+  let history = JSON.parse(localStorage.getItem('history')||'[]');
+
+  history.push({name:name, request:surface, message:message, size:projectSize, price:price, priceOff:ownSupplyCheckbox.checked ? discountPrice : null});
+
+  localStorage.setItem('history',JSON.stringify(history));
+
+
+
+  // Save name for welcome back
+
+  localStorage.setItem('lastUser', name);
 
 
 
@@ -783,6 +765,32 @@ function sendRequest(method){
   }
 
   submitResult.innerText = "Ready! Use WhatsApp or Email to submit.";
+
+}
+
+
+
+// Render history
+
+function renderHistory(){
+
+  const historyList = document.getElementById('historyList');
+
+  historyList.innerHTML='';
+
+  const history = JSON.parse(localStorage.getItem('history')||'[]');
+
+  if(history.length===0) { historyList.innerText="No past requests yet."; return; }
+
+  history.forEach(h=>{
+
+    const card = document.createElement('div'); card.className='history-card';
+
+    card.innerText = `Name: ${h.name}\nRequest: ${h.request}\nMessage: ${h.message}\nSize: ${h.size}\nEstimated Price: $${h.price}${h.priceOff?'\nPrice Off: $'+h.priceOff:''}`;
+
+    historyList.appendChild(card);
+
+  });
 
 }
 
@@ -854,7 +862,17 @@ setInterval(floatNextAnimal, 2200);
 
 // Welcome Note
 
-if(!localStorage.getItem('visited')){
+let lastUser = localStorage.getItem('lastUser');
+
+if(lastUser){
+
+  document.getElementById('welcomeNote').innerHTML=`Welcome back ${lastUser}, nice seeing you again!`;
+
+  document.getElementById('welcomeNote').style.opacity=1;
+
+  setTimeout(()=>{ document.getElementById('welcomeNote').style.opacity=0; },5000);
+
+} else if(!localStorage.getItem('visited')){
 
   document.getElementById('welcomeNote').style.opacity = 1;
 
@@ -870,6 +888,8 @@ if(!localStorage.getItem('visited')){
 
 </html>
 
+ 
+
 
 
 
@@ -877,6 +897,7 @@ if(!localStorage.getItem('visited')){
 
 
  
+
 
 
 
