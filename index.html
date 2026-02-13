@@ -394,6 +394,8 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
     </select>
 
+
+
     <label>Surface / Material</label>
 
     <select id="surface">
@@ -428,17 +430,31 @@ footer { text-align:center; padding:14px; background:#fff; color:var(--purple); 
 
 
 
+    <!-- ADDED Upload Image -->
+
+    <label>Upload Reference Image (optional)</label>
+
+    <input type="file" id="estimateImage" accept="image/*">
+
+
+
     <label>Describe Your Idea</label>
 
     <textarea rows="4" placeholder="Describe your idea, deadline, etc."></textarea>
 
+
+
     <button class="btn submit" id="calculatePrice">Get Estimate</button>
+
+
 
     <div class="result" id="priceResult"></div>
 
   </div>
 
 </section>
+
+
 
 
 
@@ -956,9 +972,3 @@ if(lastUser){
 
 </html>
 
-
-
-
-
-
-  
